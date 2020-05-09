@@ -1,0 +1,17 @@
+{
+  "name": "travelwishapp",
+  "version": "1.0.0",
+  "description": "Travel wish app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matus Caban",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.9.13"
+  }
+}

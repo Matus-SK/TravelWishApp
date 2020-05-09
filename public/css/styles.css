@@ -1,0 +1,86 @@
+body {
+    background-color: #3F51B5;
+}
+
+#heading {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: 'Archivo Black', sans-serif;;  
+}
+
+.navbar-custom {
+    background-color: #303F9F;
+    font-family: 'Roboto', sans-serif;
+}
+
+input:checked+p{
+    text-decoration: line-through;
+}
+
+.box {
+    color: #212121;
+    background-color: #C5CAE9;
+    max-width: 375px;
+    margin: 50px auto;
+    border-radius: 5px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #3F51B5;
+}
+.item:last-child {
+    border-bottom: 0;
+}
+
+input[type="checkbox"] {
+    margin: 20px 0 20px 20px;
+}
+
+p {
+   margin: 0;
+   padding: 20px;
+   font-size: 1.2rem;
+   font-family: 'Roboto', sans-serif; 
+}
+
+form {
+    text-align: center;
+    margin-left: 20px;
+  }
+
+  button {
+    min-height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border-color: transparent;
+    background-color: #303F9F;
+    color: #fff;
+    font-size: 20px;
+    padding: 6px 6px 8px;
+    margin-right: 8px;
+    border-width: 0;
+}
+
+input[type="text"] {
+    text-align: center;
+    height: 60px;
+    top: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 200;
+    width: 313px;
+}
+  
+  input[type="text"]:focus {
+    outline: none;
+    box-shadow: inset 0 -3px 0 0 #A683E3;
+}
+  
+  ::placeholder {
+    color: grey;
+    opacity: 1;
+}

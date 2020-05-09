@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootastrap link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <!-- lokal CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Roboto&display=swap" rel="stylesheet">
+    <title>Travel Wish List</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item px-3">
+              <a class="nav-link" href="asia">Asia <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link" href="/">Africa</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link" href="america">America</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link" href="europe">Europe</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link" href="australia">Australia</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+    <div class="box" id="heading">
+        <h1><%= header %></h1>        
+    </div>
+
+
+    <div class="box">
+     
+      <% Array.prototype.forEach.call(addPlace, function(place){ %>
+      <form action="/delete" method="post">  
+        <div class="item">
+            <input type="checkbox" name="checkbox" value="<%= place._id%>" onchange="this.form.submit()" >
+            <p><%= place.item %></p>
+            <input type="hidden" name="inputType" value="<%= header %>">
+        </div>
+      </form> 
+   <% }) %>
+    
+    
+       
+      
+      
+        
+        <form class="item" action="/" method="post">
+            <input type="text" name="addPlace" placeholder="Add new destination">
+            <button type="submit" name="button" value="<%= header %>">+</button>
+        </form>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
