@@ -7,5 +7,4 @@ Thanks to bootstrap app is responsive.
 ![Image of App3](https://github.com/Matus-SK/TravelWishApp/blob/master/TravelApp/obr_5.jpg)
 ![Image of App4](https://github.com/Matus-SK/TravelWishApp/blob/master/TravelApp/obr_6.jpg)
 
-I was able to upload it to heroku servers. I am using free mongoose atlas database server.
-https://fathomless-bayou-28405.herokuapp.com/
+What I learned: EJS, nodejs works with mongoose 
