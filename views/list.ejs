@@ -51,7 +51,8 @@
       <form action="/delete" method="post">  
         <div class="item">
             <input type="checkbox" name="checkbox" value="<%= place._id%>" onchange="this.form.submit()" >
-            <p><%= place.item %></p>
+            <p><%= place.item %></p><br>
+            <p id="date"><%= place.created.toDateString() %></p>
             <input type="hidden" name="inputType" value="<%= header %>">
         </div>
       </form> 

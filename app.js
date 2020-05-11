@@ -5,20 +5,20 @@ const mongoose = require("mongoose");
 const _ = require("lodash");
 
 
-
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'))
 app.set("view engine", "ejs");
 
 //set dtb connections
-mongoose.connect('mongodb://localhost:27017/travelDB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/wishtravelDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 //db setting
 
 const placeNameSchema = new mongoose.Schema({
-    item: String
+    item: String,
+    created: {type: Date, default: Date.now}
 });
 
 const continentNameSchema = new mongoose.Schema({
@@ -42,19 +42,50 @@ const place2 = new Afrika({
 
 const defaultPlaces = [place1, place2];
 
+app.route("/")
 
-
-app.get("/", function(req, res){
+.get(function(req, res){
 
     Afrika.find(function(err, foundPlaceNames){
         if (foundPlaceNames.length === 0) {
             Afrika.insertMany(defaultPlaces, function(err){});
             res.redirect("/")
         }else{
-            res.render("list", {addPlace: foundPlaceNames, header: "Afrika"})
+            res.render("list", {addPlace: foundPlaceNames, header: "Afrika"});
         }
     });
     
+})
+//make decision in witch database should be informations saved
+.post(function(req, res){
+    const addPlace = req.body.addPlace;
+    const listHeader = req.body.button;
+
+    const newPlace = new Afrika ({
+        item: addPlace
+    });
+    
+    if (listHeader === "Afrika"){
+        if (addPlace){
+            newPlace.save();
+            
+            res.redirect("/");
+        }else {
+            res.redirect("/");
+        }
+        
+    }else {
+        if (addPlace){
+            Continent.findOne({name: listHeader}, function(err, foundContinents){
+                foundContinents.item.push(newPlace);
+                foundContinents.save();
+                res.redirect("/" + listHeader);
+            })
+        } else {
+            res.redirect("/" + listHeader);
+        }
+        
+    }
 });
 
 
@@ -76,26 +107,6 @@ app.get("/:continentName", function(req, res){
 
 });
 
-//make decision in witch database should be informations saved
-app.post("/", function(req, res){
-    const addPlace = req.body.addPlace;
-    const listHeader = req.body.button;
-    const newPlace = new Afrika ({
-        item: addPlace
-    });
-    
-    if (listHeader === "Afrika"){
-        newPlace.save();
-        res.redirect("/");
-    }else {
-        Continent.findOne({name: listHeader}, function(err, foundContinents){
-            console.log(foundContinents);
-            foundContinents.item.push(newPlace);
-            foundContinents.save();
-            res.redirect("/" + listHeader);
-        })
-    }
-});
 
 app.post("/delete", function(req, res){
     const checkbox = req.body.checkbox;
@@ -111,6 +122,9 @@ app.post("/delete", function(req, res){
     
 });
 
+
+
+
 app.listen(3000, function(req, res){
-    console.log("Port 3000 up and running");
+    console.log("Server has started succesfully");
 });

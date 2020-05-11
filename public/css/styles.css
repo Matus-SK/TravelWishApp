@@ -27,6 +27,7 @@ input:checked+p{
 }
 
 .item {
+    position: relative;
     display: flex;
     align-items: center;
     border-bottom: solid 1px #3F51B5;
@@ -43,7 +44,8 @@ p {
    margin: 0;
    padding: 20px;
    font-size: 1.2rem;
-   font-family: 'Roboto', sans-serif; 
+   font-family: 'Roboto', sans-serif;
+
 }
 
 form {
@@ -83,4 +85,12 @@ input[type="text"] {
   ::placeholder {
     color: grey;
     opacity: 1;
+    font-family: 'Roboto', sans-serif;
+}
+
+#date{
+    font-size: 0.7rem;
+    position: absolute;
+    right: -12px;
+    bottom: -12px;
 }
